@@ -1,11 +1,19 @@
-import Image from "next/image";
+import { Footer, Header } from "@/components";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      
-      Hello World!!!
-      
-    </main>
+    <>
+      <Header />
+      <main className="bg-gray-50	min-h-screen	">
+        {/* Hello I'm Carlos Huguez */}
+        
+        {/* WHO AM I? */}
+        
+        {/* Projects */}
+        
+        {/* experience */}
+      </main>
+      <Footer />
+    </>
   );
 }

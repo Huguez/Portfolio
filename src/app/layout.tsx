@@ -1,3 +1,4 @@
+import Favicon from '/public/favicon.ico';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -5,8 +6,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "",
+  title: "Huguez's Portfolio",
   description: "",
+  icons: [ { rel: 'icon', url: Favicon.src } ]
 };
 
 interface propsLayout {
