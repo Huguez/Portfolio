@@ -3,8 +3,6 @@ import Link from "next/link"
 import { MdOutlinePhoneAndroid, MdEmail, MdPlace } from "react-icons/md";
 import { FaRegUserCircle, FaLinkedin, FaGithub, FaInstagram, FaHome, FaCode } from "react-icons/fa";
 
-
-
 const Points = () => (
    <svg className="absolute top-0 right-0" width="61" height="77" viewBox="0 0 61 77" fill="none" xmlns="http://www.w3.org/2000/svg">
    <g opacity="0.5">
