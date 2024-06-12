@@ -12,14 +12,18 @@ export default function Header() {
          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                <Image src="/imgs/H-black.jpg" className="rounded-lg" alt="Logo Carlos Huguez's portfolio" width={ 50 } height={ 50 } />
-               <span className="self-center text-3xl whitespace-nowrap font-bold text-zinc-600">Portfolio</span>
+               <span className="hidden sm:block self-center text-3xl whitespace-nowrap font-bold text-zinc-600">Portfolio</span>
             </Link>
+
+            <span className="block sm:hidden text-center text-lg whitespace-nowrap font-bold text-zinc-600">Portfolio</span>
+
             <button onClick={ () => handleSidebar( !showSidebar ) }  className="inline-flex items-center focus:outline-none focus:ring-2 text-blue-400 hover:bg-blue-100 focus:ring-blue-200 p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden " data-collapse-toggle="navbar-default" type="button"  aria-controls="navbar-default" aria-expanded="false">
                <span className="sr-only">Open main menu</span>
                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
                </svg>
             </button>
+
             <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                <ul className=" flex flex-row p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:mt-0  ">
                   <li>

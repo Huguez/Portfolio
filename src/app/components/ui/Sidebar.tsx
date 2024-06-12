@@ -8,7 +8,7 @@ export default function Sidebar() {
    const { showSidebar, handleSidebar } = useUI()
 
    return <>
-      <aside className={`fixed block md:hidden top-0 ${ showSidebar ? "translate-x-full" : "translate-x-0	" } right-0 z-40 w-64 h-screen transition-all `} aria-label="Sidebar">
+      <aside className={`fixed block md:hidden top-0 ${ showSidebar ? "translate-x-0" : "translate-x-full"  } right-0 z-40 w-64 h-screen transition-all `} aria-label="Sidebar">
          
          <div className="h-full px-3 py-4 overflow-y-auto bg-white ">
             
