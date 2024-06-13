@@ -5,3 +5,8 @@ export { default as ButtonCV } from "./ui/ButtonCV"
 
 export { default as Providers } from "./providers/Providers"
 
+export { default as WhoIam } from "./pageComponents/WhoIam"
+export { default as Hello } from "./pageComponents/Hello"
+export { default as Projects } from "./pageComponents/Projects"
+
+export { ProjectCard } from "./ui/ProjectCard"
