@@ -5,7 +5,7 @@ export default function Projects() {
    const p = [ 1, 2, 3, 4, 5 ]
 
    return (
-      <div className="md:pb-16 ">
+      <div className="p-16 lg:py-20 ">
 
          <p className="text-center font-general-medium text-2xl sm:text-4xl mb-6 ">
             Projects

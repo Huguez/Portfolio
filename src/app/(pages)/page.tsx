@@ -1,6 +1,6 @@
 import { Metadata } from "next/types";
 
-import { Hello, Projects, WhoIam } from "@/components";
+import { Hello, Projects, WhoIam, Experience } from "@/components";
 
 
 export const metadata: Metadata = {
@@ -16,9 +16,10 @@ export default function Home() {
 
 			<WhoIam />
       
-			<Projects />
+			<Experience />
       
-      	{/* experience */}
+			<Projects />
+
     </main>
   );
 }

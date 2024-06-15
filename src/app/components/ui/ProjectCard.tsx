@@ -13,9 +13,9 @@ export function ProjectCard() {
          <Link href="/">
             <Image 
                src={ placeholder.src } 
-               layout="fill2" // required
-               objectFit="contain" // change to suit your needs
-               className="rounded-t-lg w-full " // just an example 
+               layout="fill2" 
+               objectFit="contain" 
+               className="rounded-t-lg w-full "
                alt={'Carlos Huguez'} 
                width={200}  
                height={200}

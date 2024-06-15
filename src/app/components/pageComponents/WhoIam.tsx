@@ -1,7 +1,7 @@
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 export default function WhoIam() {
-  return <div className='bg-gray-50 py-16 lg:py-28'>
+  return <div className='bg-gray-50 p-16 lg:pt-28'>
   <h3 className='font-header font-semibold uppercase text-2xl sm:text-4xl lg:text-6xl text-center text-blue-600'> WHO AM I? </h3>
   <p className='text-center text-gray-800 text-base sm:text-xl lg:text-2xl'> 
     I'm a Web Application Developer
