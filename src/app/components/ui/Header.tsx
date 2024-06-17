@@ -27,10 +27,10 @@ export default function Header() {
             <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                <ul className=" flex flex-row p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:mt-0  ">
                   <li>
-                     <a href="#" className="block py-2 px-3 md:p-0 text-gray-900 hover:text-zinc-600 font-bold " aria-current="page">Home</a>
+                     <Link href="/" className="block py-2 px-3 md:p-0 text-gray-900 hover:text-zinc-600 font-bold ">Home</Link>
                   </li>
                   <li>
-                     <a href="#" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">About Me</a>
+                     <Link href="aboutMe" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">About Me</Link>
                   </li>
                   <li>
                      <a href="#" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">Projects</a>
