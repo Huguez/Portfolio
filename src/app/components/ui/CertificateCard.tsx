@@ -1,14 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import placeholder from '/public/imgs/placeholder.jpg';
+import { certificateI } from "@/interfaces";
 
-interface Props {
-   img: string;
-   title: string;
-   link: string;
-}
+interface Props {}
 
-export function CertificateCard( { img, title, link }:Props ) {
+export function CertificateCard( { img, title, link }:Props & certificateI ) {
 
    return (
       <section  className="flex flex-col  sm:flex-row items-center p-0 bg-white border border-gray-200 rounded-lg m-5 shadow max-w-3xl">

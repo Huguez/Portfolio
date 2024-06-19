@@ -30,10 +30,10 @@ export default function Header() {
                      <Link href="/" className="block py-2 px-3 md:p-0 text-gray-900 hover:text-zinc-600 font-bold ">Home</Link>
                   </li>
                   <li>
-                     <Link href="aboutMe" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">About Me</Link>
+                     <Link href="/aboutMe" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">About Me</Link>
                   </li>
                   <li>
-                     <a href="#" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">Projects</a>
+                     <Link href="/projects" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">Projects</Link>
                   </li>
                   <li>
                      <a href="#" className="block py-2 px-3 md:p-0 rounded  hover:text-zinc-600 font-bold text-gray-900 transition-all	duration-300 ">Contact</a>

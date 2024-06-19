@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import me from '/public/me/Carlos_Huguez.jpeg'; 
 import { CertificateCard } from "@/components";
+import { certificateI } from "@/interfaces";
 
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AboutMePage() {
 
-   const certificates = [ 
+   const certificates: certificateI[] = [ 
       {
          title: "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
          img: "https://img-c.udemycdn.com/course/240x135/1879018_95b6_3.jpg",
