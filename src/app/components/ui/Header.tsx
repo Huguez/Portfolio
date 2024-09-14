@@ -15,7 +15,7 @@ export default function Header() {
                <span className="hidden sm:block self-center text-3xl whitespace-nowrap font-bold text-zinc-600">Portfolio</span>
             </Link>
 
-            <span className="block sm:hidden text-center text-lg whitespace-nowrap font-bold text-zinc-600">Portfolio</span>
+            <Link href="/" className="block sm:hidden text-center text-lg whitespace-nowrap font-bold text-zinc-600">Portfolio</Link>
 
             <button onClick={ () => handleSidebar( !showSidebar ) }  className="inline-flex items-center focus:outline-none focus:ring-2 text-blue-400 hover:bg-blue-100 focus:ring-blue-200 p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden " data-collapse-toggle="navbar-default" type="button"  aria-controls="navbar-default" aria-expanded="false">
                <span className="sr-only">Open main menu</span>
@@ -32,11 +32,11 @@ export default function Header() {
                   <li>
                      <Link href="/aboutMe" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">About Me</Link>
                   </li>
+                  {/* <li>
+                     <Link href="/" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">Projects</Link>
+                  </li> */}
                   <li>
-                     <Link href="/projects" className="block py-2 px-3 md:p-0  hover:text-zinc-600 font-bold	text-gray-900 transition-all	duration-300">Projects</Link>
-                  </li>
-                  <li>
-                     <a href="#" className="block py-2 px-3 md:p-0 rounded  hover:text-zinc-600 font-bold text-gray-900 transition-all	duration-300 ">Contact</a>
+                     <Link href="contact" className="block py-2 px-3 md:p-0 rounded  hover:text-zinc-600 font-bold text-gray-900 transition-all	duration-300 ">Contact</Link>
                   </li>
                   <li>
                      <ButtonCV />

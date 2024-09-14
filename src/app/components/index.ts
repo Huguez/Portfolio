@@ -13,6 +13,7 @@ export { default as Experience } from "./pageComponents/Experience"
 export { ProjectCard } from "./ui/ProjectCard"
 export { CertificateCard } from "./ui/CertificateCard"
 export { default as SlideShow } from "./ui/slideShow/SlideShow"
-
+export { ContactForm } from "./ui/FormContact"
 
 export { default as Loading } from "./ui/Loading"
+export { default as Spinner  } from "./ui/Spinner"

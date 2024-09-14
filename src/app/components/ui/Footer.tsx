@@ -68,7 +68,7 @@ export default function Footer() {
                   <Link href="/" className="flex items-center justify-center lg:justify-start">
                         <Image src="/imgs/H-black.jpg" className="rounded-lg me-5" alt="Logo Carlos Huguez's portfolio" width={ 75 } height={ 75 } />
                         <p className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-                           Let's Talk!
+                           Let&apos;s Talk!
                         </p>
                   </Link>
                </div>
@@ -136,12 +136,12 @@ export default function Footer() {
                            About Me 
                         </Link>
                      </li>
-                     <li className="text-lg md:text-base " > 
+                     {/* <li className="text-lg md:text-base " > 
                         <Link href={"/"} className="flex flex-row items-center justify-center lg:justify-start text-zinc-300  hover:text-blue-500 ">  
                            <FaCode className="mr-1" />
                            Projects 
                         </Link>
-                     </li>
+                     </li> */}
                   </ul>
                </div>
                

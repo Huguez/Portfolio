@@ -1,7 +1,9 @@
-import Favicon from '/public/favicon.ico';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+ 
+import Favicon from '/public/favicon.ico';
+
 import { Providers } from "@/components"
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,7 +19,6 @@ interface propsLayout {
 }
 
 export default function RootLayout({ children,}: Readonly<propsLayout>) {
-
   return (
     <html lang="en">
       <body className={inter.className}>

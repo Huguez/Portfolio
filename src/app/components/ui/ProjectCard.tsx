@@ -13,8 +13,6 @@ export function ProjectCard() {
          <Link href="/">
             <Image 
                src={ placeholder.src } 
-               layout="fill2" 
-               objectFit="contain" 
                className="rounded-t-lg w-full "
                alt={'Carlos Huguez'} 
                width={200}  

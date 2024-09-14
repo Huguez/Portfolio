@@ -22,3 +22,7 @@
     text-wrap: balance;
   }
 }
+
+.fadeUpCustom{
+  @apply animate-fade-up animate-once animate-duration-1000 animate-delay-[400ms]
+}

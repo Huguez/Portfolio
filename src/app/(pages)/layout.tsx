@@ -1,4 +1,4 @@
-import { Footer, Header, Sidebar } from "@/components";
+import { Footer, Header, Loading, Sidebar } from "@/components";
 
 interface Lprops { children: React.ReactNode; }
 
@@ -7,6 +7,7 @@ export default function Layout({ children }: Lprops ) {
       <Header />
       <Sidebar />
       { children }
+      <Loading />
       <Footer />
    </>;
 }

@@ -1,13 +1,13 @@
 
 import type { Metadata } from "next";
-import me from '/public/me/Carlos_Huguez.jpeg'; 
+import me from "/public/me/Carlos_Huguez.jpeg"; 
 import { CertificateCard } from "@/components";
 import { certificateI } from "@/interfaces";
 
 
 export const metadata: Metadata = {
-   title: "About Me | Carlos Huguez's Portfolio",
-   description: "Carlos Huguez's Portfolio.",
+   title: "About Me | Carlos Huguez&apos;s Portfolio",
+   description: "Carlos Huguez&apos;s Portfolio.",
  };
 
 export default function AboutMePage() {
@@ -46,26 +46,35 @@ export default function AboutMePage() {
          img: "https://img-c.udemycdn.com/course/240x135/947098_02ec_2.jpg",
          link: "https://www.udemy.com/certificate/UC-f7a56cdb-ea54-4ca1-8d65-75fb04fe232a/"
       }, {
-         title: "MongoDB - The Complete Developer's Guide 2024",
+         title: "MongoDB - The Complete Developers Guide 2024",
          img: "https://img-c.udemycdn.com/course/240x135/1906852_93c6_2.jpg",
          link: "/aboutMe"
       }
    ]
 
    return (
-      <div className="container mx-auto pt-0 sm:py-16 ">
+      <div className="container mx-auto pt-0 sm:py-16 fadeUpCustom">
       
          <div className="block sm:flex sm:justify-between sm:gap-10 mt-0" >
             <div className="w-full sm:w-2/6 mb-7 sm:mb-0 ">
-               <div className='bg-cover bg-center bg-no-repeat mx-auto h-48 w-48 md:h-64 md:w-64  lg:h-80 lg:w-80 rounded-lg ' style={{ backgroundImage: `url(${ me.src })` }} >
+               <div className="bg-cover bg-center bg-no-repeat mx-auto h-48 w-48 md:h-64 md:w-64  lg:h-80 lg:w-80 rounded-lg" style={{ backgroundImage: `url(${ me.src })` }} >
                </div>
             </div>
             <div className=" sm:mx-auto w-full sm:w-4/6  sm:pr-5 ">
                <h2 className="font-semibold uppercase md:mb-4 text-xl md:text-3xl lg:text-4xl text-center sm:text-left text-blue-600"> About Me </h2>
-               <p className="mb-4 px-5 sm:px-0 text-gray-700 text-justify text-base sm:text-md md:text-lg"> I'm a web developer with knowledge in Frontend with React (16, 17, 18) and React-router (v5, v6) as well as React-Redux, Javascript (ES6+) and  typescript (6, 7). I can make Unit test, integration test with jest ( 27, 28 ), jest-dom( 5 ), enzyme ( 2, 2.9 ) and enzyme-adapter-react-16. </p>
-               <p className="mb-4 px-5 sm:px-0 text-gray-700 text-justify text-base sm:text-md md:text-lg"> On Backend I've been worked with Node.js ( v20, v18, v16, v14 ) building API REST with express.js ( 4.18, 4.17 ) with express-static (1.2, 1.0), express-fileupload ( 1.4, 1.1 ), express-validator ( 6.14, 6.13 ) and Koa.js ( 2.14, 2.13, 2.9 ) with Koa-router ( 12.0, 11.0, 10.1 ) also. For the manager of databases since code i've used an object relational mapper that is Sequelize ( 6.32, 6.31, 6.29 ), and mongoose ( v8, v7, v6 ).
+               <p className="mb-4 px-5 sm:px-0 text-gray-700 text-justify text-base sm:text-md md:text-lg"> 
+                  I&apos;m a web developer with knowledge in Frontend with React (16, 17, 18) and React-router (v5, v6) as well as React-Redux, Javascript (ES6+) and  typescript (6, 7). 
+                  I can make Unit test, integration test with jest ( 27, 28 ), jest-dom( 5 ), enzyme ( 2, 2.9 ) and enzyme-adapter-react-16.
+               </p>
+
+               <p className="mb-4 px-5 sm:px-0 text-gray-700 text-justify text-base sm:text-md md:text-lg"> 
+                  On Backend I&apos;ve been worked with Node.js (v20, v18, v16, v14) building API REST with express.js (4.18, 4.17) 
+                  with express-static (1.2, 1.0), express-fileupload ( 1.4, 1.1 ), express-validator ( 6.14, 6.13 ) 
+                  and Koa.js ( 2.14, 2.13, 2.9 ) with Koa-router ( 12.0, 11.0, 10.1 ) also. 
+                  For the manager of databases since code i&apos;ve used an object relational mapper that is Sequelize (6.32, 6.31, 6.29), and mongoose (v8, v7, v6).
                   <br />
-                  About databases I've experiences with mysql and postgresSQL creating relationship databases, storeprocedures, triggers, temporal tables, functions and views. </p>
+                  About databases I&apos;ve experiences with MySql and postgresSQL creating relationship databases, storeprocedures, triggers, temporal tables, functions and views.
+               </p>
             </div>
          </div>
 
