@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
    // basePath: '/Huguez',
-   output: 'export',
+   // output: 'export',
    reactStrictMode: true,
 };
 
