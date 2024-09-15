@@ -7,9 +7,6 @@ import desktop4 from '/public/imgs/Desktop_4.jpg';
 import desktop5 from '/public/imgs/Desktop_5.jpg';
 import { SlideShow } from "@/components";
 
-export function generateStaticParams() {
-	return [ { slug: [""] } ]
-}
 
 export default function ProjectIdPage() {
 	
