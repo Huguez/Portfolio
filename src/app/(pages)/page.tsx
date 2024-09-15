@@ -1,11 +1,26 @@
-import Image from "next/image";
+import { Metadata } from "next/types";
+
+import { Hello, Projects, WhoIam, Experience } from "@/components";
+
+
+export const metadata: Metadata = {
+  title: "Carlos Huguez's Portfolio",
+  description: "Portfolio where Carlos Huguez show his abilities, capacities, and experience.",
+};
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+
+	return (
+		<main className="bg-gray-50	min-h-screen">
+			
+			<Hello />
+
+			<WhoIam />
       
-      Hello World!!!
+			<Experience />
       
+			{/* <Projects /> */}
+
     </main>
   );
 }
