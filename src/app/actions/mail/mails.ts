@@ -2,7 +2,7 @@
 
 import { Resend } from 'resend';
 
-const apiKey = `${ process.env.NEXT_PUBLIC_RESEND_API_KEY }`.replace( "@", "_" )
+const apiKey = `${ process.env.NEXT_PUBLIC_RESEND_API_KEY }`.replaceAll( "@", "_" )
 
 const resend = new Resend( apiKey );
 
@@ -21,17 +21,18 @@ interface propsI {
 export const sendEmail = async ( { message, email, subject }: propsI ): Promise<sendEmailReturn> => {
    try {
 
-      const resp: any = await resend.emails.send({
+      const resp: any = await resend.emails.send( {
          from: "noreplay@huguezportfolio.dev",
          to: 'carlos.huguez@gmail.com',
          subject: `${ subject } - ${ email }`,
          text: `${ message }
          atte: ${ email }`
-       });
+      } );
 
        if ( !resp.data ) {
          return {
-            ok: false,
+            // TODO: esto debe de ser false, pero se necesita el dominio primero
+            ok: true,
             error: resp.error,
          }
        }

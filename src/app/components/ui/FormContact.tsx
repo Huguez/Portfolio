@@ -39,13 +39,11 @@ export function ContactForm() {
       initialValues,
       onSubmit: async  ( values : FormValuesI, { resetForm } ) => {
          
-         // loading.run()
+         loading.run()
 
          const { ok, resp, error } = await sendEmail( values )
          
          console.log( error );
-
-         // resetForm()
 
          if ( ok ) {
             
@@ -58,14 +56,16 @@ export function ContactForm() {
                   msg: <p className="text-green-600 text-center text-3xl sm:text-4xl font-bold mt-10 sm:mt-20 mb-7 "> Message send !! </p>
                } )
 
-            }, 1000 )
+               resetForm()
+
+            }, 800 )
 
          } else {
 
             setMailSend( { 
                send: true , 
                msg: <p className="text-red-600 text-center text-3xl sm:text-4xl font-bold mt-10 sm:mt-20 mb-7 "> Something got wrong !! </p> 
-            } )
+            } ) 
 
             loading.stop()
          }
