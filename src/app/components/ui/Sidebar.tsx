@@ -33,12 +33,12 @@ export default function Sidebar() {
                      <span className="ms-3"> About Me  </span>
                   </Link>
                </li>
-               <li> 
+               {/* <li> 
                   <Link href="/" className="flex items-center p-2 transition duration-300 font-bold text-zinc-600 hover:text-gray-100 rounded-lg  hover:bg-blue-500  group">
                      <FaCode className="mr-1" />
                      <span className="ms-3">Projects </span>
                   </Link>
-               </li>
+               </li> */}
                <li> 
                   <Link href="contact" className="flex items-center p-2 transition duration-300 font-bold text-zinc-600 hover:text-gray-100 rounded-lg  hover:bg-blue-500  group">
                      <IoMdMail  />
