@@ -1,7 +1,7 @@
 export interface certificateI{
    title: string;
    desc?: string;
-   img: string;
+   imagen: string;
    link: string;
    rated?: string;
 }
