@@ -1,9 +1,9 @@
 
 import type { Metadata } from "next";
-import me from "/public/me/Carlos_Huguez.jpeg"; 
 import { CertificateCard } from "@/components";
 import { getAboutMe, getCertifications } from "@/actions";
 
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
    title: "About Me | Carlos Huguez&apos;s Portfolio",

@@ -4,7 +4,7 @@ import type { JobI } from "@/interfaces";
 import { useInView } from "react-intersection-observer";
 
 interface paramsI {
-   jobs: JobI[];
+   jobs: JobI[] | undefined;
 }
 
 export default function Experience( { jobs }:paramsI ) {
@@ -54,7 +54,7 @@ export default function Experience( { jobs }:paramsI ) {
          <div className="relative mx-auto mt-10  flex flex-col w-full lg:w-2/4 pr-1">
 
             {
-               jobs.map( job => (
+               jobs && jobs.map( job => (
                   <div key={   job.id } className="mt-8 flex flex-col text-center md:flex-row md:text-left">
                
                      <div className="md:w-2/5">
