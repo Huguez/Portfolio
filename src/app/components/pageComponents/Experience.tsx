@@ -1,12 +1,50 @@
 'use client'
 
+import type { JobI } from "@/interfaces";
 import { useInView } from "react-intersection-observer";
 
-export default function Experience() {
+interface paramsI {
+   jobs: JobI[] | undefined;
+}
 
-   const { ref, inView } = useInView({
+export default function Experience( { jobs }:paramsI ) {
+
+   const { ref, inView } = useInView( {
       threshold: 0,
-   })
+   } )
+
+   const formatDate = ( fecha: string ): string => {
+      const [ year, mounth, ..._ ] = fecha.slice( 0, 10 ).split( "-" )
+
+      switch( mounth ){
+         case "01":
+            return `January ${ year }`
+         case "02":
+            return `Febrary ${ year }`
+         case "03":
+            return `Mars ${ year }`
+         case "04":
+            return `April ${ year }`
+         case "05":
+            return `May ${ year }`
+         case "06":
+            return `June ${ year }`
+         case "07":
+            return `July ${ year }`
+         case "08":
+            return `August ${ year }`
+         case "09":
+            return `September ${ year }`
+         case "10":
+            return `October ${ year }`
+         case "11":
+            return `November ${ year }`
+         case "12":
+            return `December ${ year }`
+         default: 
+            throw Error(" convertDate ")
+      }
+   }
 
    return (
       <div ref={ ref } className={`container p-16 lg:pt-28 mx-auto ${ inView ? "fadeUpCustom" : "" }`}  >
@@ -14,8 +52,46 @@ export default function Experience() {
             Experience
          </h4>
          <div className="relative mx-auto mt-10  flex flex-col w-full lg:w-2/4 pr-1">
-         
-            <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
+
+            {
+               jobs && jobs.map( job => (
+                  <div key={   job.id } className="mt-8 flex flex-col text-center md:flex-row md:text-left">
+               
+                     <div className="md:w-2/5">
+                        <div className="">
+                           <div className="flex justify-center md:justify-start">
+                              <span className="text-gray-600 text-xl font-bold">
+                                 { job.companyName }
+                              </span>
+                              <div className="relative  hidden w-full md:block" >
+                                 <span className="absolute inset-x-0 top-4 h-0.5 -translate-y-1/2 transform bg-gray-300" />
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div className="md:w-3/5 ">
+                        <div className="relative flex md:pl-18">
+                           <span className="absolute -left-2 top-2 hidden h-4 w-4 rounded-full border-2 border-gray-300  bg-white md:block"></span>
+                           <div className="mt-1 flex">
+                              <div className="md:-mt-1 pl-1 md:pl-8 lg:pl-12 ">
+                                 <p className="block font-body font-bold text-gray-500 "> { formatDate( job.startDate )   } / { formatDate( job.endDate )  } </p>
+                                 <p className="block pt-2 font-header text-xl font-bold text-blue-600"> { job.position } </p>  
+                                 <span className="text-base  text-gray-500 capitalize">({ job.modeWork })</span>                                 
+                                 <div className="pt-2">
+                                    <p className="block font-body text-black">
+                                       { job.description }
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               ) )
+            }
+
+            {/* <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
                
                <div className="md:w-2/5">
                   <div className="">
@@ -49,9 +125,9 @@ export default function Experience() {
                      </div>
                   </div>
                </div>
-            </div>
+            </div> */}
 
-            <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
+            {/* <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
                
                <div className="md:w-2/5">
                   <div className="">
@@ -84,9 +160,9 @@ export default function Experience() {
                      </div>
                   </div>
                </div>
-            </div>
+            </div> */}
 
-            <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
+            {/* <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
                
                <div className="md:w-2/5">
                   <div className="">
@@ -120,7 +196,7 @@ export default function Experience() {
                      </div>
                   </div>
                </div>
-            </div>
+            </div> */}
 
             
             {/* <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
