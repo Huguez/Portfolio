@@ -10,7 +10,10 @@ export default function Sidebar() {
    const { showSidebar, handleSidebar } = useUI()
 
    return <>
-      <aside className={`fixed block md:hidden top-0 ${ showSidebar ? "translate-x-0" : "translate-x-full"  } right-0 z-40 w-64 h-screen transition-all `} aria-label="Sidebar">
+      { showSidebar && <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black opacity-30 " /> }
+      { showSidebar &&  <div className="fade-in fixed top-0 left-0 w-screen h-screen z-50 backdrop-filter backdrop-blur-sm" onClick={ () => handleSidebar( !showSidebar ) } /> }
+      
+      <aside className={`fixed block md:hidden top-0 ${ showSidebar ? "translate-x-0" : "translate-x-full"  } right-0 z-50 w-64 h-screen transition-all `} aria-label="Sidebar">
          
          <div className="h-full px-3 py-4 overflow-y-auto bg-white ">
             
