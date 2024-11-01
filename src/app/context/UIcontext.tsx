@@ -40,16 +40,17 @@ export function UIProvider( props: UIProps ) {
    const [ show, setShow ] = useState<boolean>( false )
 
    const handleSidebar = ( value: boolean ) => {
+      window.document.body.style.overflow = !value ? 'auto': 'hidden'
       setShowSidebar( value )
    }
 
    const stop = () => {
-      document.body.style.overflow = 'auto'
+      window.document.body.style.overflow = 'auto'
       setShow( false )
    }
 
    const run = () => {
-      document.body.style.overflow = 'none'
+      window.document.body.style.overflow = 'hidden'
       setShow( true )
    }
 

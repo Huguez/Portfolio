@@ -1,9 +1,5 @@
 import Link from "next/link";
 
-import desktop1 from '/public/imgs/Desktop_1.jpg';
-import desktop2 from '/public/imgs/Desktop_2.jpg';
-import desktop3 from '/public/imgs/Desktop_3.jpg';
-import desktop4 from '/public/imgs/Desktop_4.jpg';
 import desktop5 from '/public/imgs/Desktop_5.jpg';
 import { SlideShow } from "@/components";
 
@@ -11,11 +7,10 @@ import { SlideShow } from "@/components";
 export default function ProjectIdPage() {
 	
 	const images = [
-		desktop1.src, 
-		desktop2.src, 
-		desktop3.src, 
-		desktop4.src, 
-		desktop5.src
+		desktop5.src,
+		desktop5.src,
+		desktop5.src,
+		desktop5.src,
 	]
 
 
