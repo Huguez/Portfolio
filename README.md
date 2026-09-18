@@ -1,26 +1,15 @@
+
+<p align="center">
+   <a href="https://nextjs.org/" target="blank">
+      <img src="https://nextjs.org/_next/static/immutable/media/nextjs-logotype-light.00-_80jv8_dct.svg" width="550" alt="Next Logo" />
+   </a>
+</p>
+
+<p align="justify">
+An open-source, full-stack web development framework built on top of React. Created and maintained by Vercel, it is designed to handle both the frontend (what users see) and backend logic (like APIs and database communication) within a single codebase. 
+</p>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
@@ -29,8 +18,39 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<h1 align="center">Personal Portfolio </h1>
+<p align="justify">
+   The purpose of this repository is to create a space for sharing software development projects, experiments, and examples that reflect my experience, learning, and evolution as a developer; it is also intended to be explored, analyzed, and used as a reference. I invite you to review the implementation, architecture, and technical decisions behind each project.
+</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<br/>
+
+<h3 align="left">Run in development</h3>
+
+1.- Clone the repository
+```bash
+$ https://github.com/Huguez/Portfolio.git
+```
+
+2.- Install dependencies
+```bash
+$ npm install
+```
+
+3.- rename .env.template to .env and write variables
+```
+NEXT_PUBLIC_RESEND_API_KEY = *******
+NEXT_PUBLIC_RESEND_MX_SEND =
+NEXT_PUBLIC_RESEND_TXT_SEND =
+NEXT_PUBLIC_RESEND_TXT_RESEND =
+
+NEXT_PUBLIC_BASEURL =
+
+NODE_ENV=Develop
+```
+
+4.- Run the service in development
+```$
+$ npm run dev
+```
