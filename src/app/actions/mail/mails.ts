@@ -1,8 +1,9 @@
 'use server'
 
 import { Resend } from 'resend';
+import { env } from "@/config/env-var";
 
-const apiKey = `${ process.env.NEXT_PUBLIC_RESEND_API_KEY }`.replaceAll( "@", "_" )
+const apiKey = `${ env.NEXT_PUBLIC_RESEND_API_KEY }`.replaceAll( "@", "_" )
 
 const resend = new Resend( apiKey );
 

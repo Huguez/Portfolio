@@ -1,6 +1,7 @@
 'use server'
+import { env } from "@/config"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASEURL
+const baseUrl = env.NEXT_PUBLIC_BASEURL
 
 interface getAboutMeReturn {
    image?: string;

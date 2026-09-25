@@ -40,17 +40,18 @@ $ npm install
 
 3.- rename .env.template to .env and write variables
 ```
-NEXT_PUBLIC_RESEND_API_KEY = *******
-NEXT_PUBLIC_RESEND_MX_SEND =
-NEXT_PUBLIC_RESEND_TXT_SEND =
-NEXT_PUBLIC_RESEND_TXT_RESEND =
+NEXT_PUBLIC_RESEND_API_KEY    = *******
+NEXT_PUBLIC_RESEND_MX_SEND    = *******
+NEXT_PUBLIC_RESEND_TXT_SEND   = *******
+NEXT_PUBLIC_RESEND_TXT_RESEND = *******
 
-NEXT_PUBLIC_BASEURL =
+NEXT_PUBLIC_BASEURL = *******
 
-NODE_ENV=Develop
+# default
+NODE_ENV=develop 
 ```
 
 4.- Run the service in development
-```$
+```
 $ npm run dev
 ```

@@ -1,8 +1,9 @@
 'use server'
 
 import { certificateI } from "@/interfaces";
+import { env } from "@/config";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASEURL
+const baseUrl = env.NEXT_PUBLIC_BASEURL
 
 interface getCerReturn {
    certifications?: certificateI[] 

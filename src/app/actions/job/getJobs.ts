@@ -1,10 +1,9 @@
 'use server'
 
 import { JobI } from "@/interfaces";
+import { env } from "@/config/env-var";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASEURL
-
-// interface params {} 
+const baseUrl = env.NEXT_PUBLIC_BASEURL
 
 interface getJobsReturn {
    jobs?: JobI[];

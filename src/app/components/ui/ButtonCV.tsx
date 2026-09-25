@@ -1,6 +1,8 @@
 'use client'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASEURL
+import { env } from "@/config/env-var";
+
+const baseUrl = env.NEXT_PUBLIC_BASEURL
 
 export default function ButtonCV() {
    
