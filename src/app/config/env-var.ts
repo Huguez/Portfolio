@@ -8,7 +8,7 @@ interface EnvVars {
    NEXT_PUBLIC_BASEURL: string;
 }
 
-const envSchema  = joi.object({
+const envSchema: joi.ObjectSchema<EnvVars> = joi.object({
    NEXT_PUBLIC_RESEND_API_KEY: joi.string().required(),
    NEXT_PUBLIC_RESEND_MX_SEND: joi.string().required(),
    NEXT_PUBLIC_RESEND_TXT_SEND: joi.string().required(),
@@ -17,9 +17,18 @@ const envSchema  = joi.object({
 }).unknown(true);
 
 
-const { error, value } = envSchema.validate( process.env );
+const { error, value } = envSchema.validate({
+   NEXT_PUBLIC_RESEND_API_KEY: process.env.NEXT_PUBLIC_RESEND_API_KEY,
+   NEXT_PUBLIC_RESEND_MX_SEND: process.env.NEXT_PUBLIC_RESEND_MX_SEND,
+   NEXT_PUBLIC_RESEND_TXT_SEND: process.env.NEXT_PUBLIC_RESEND_TXT_SEND,
+   NEXT_PUBLIC_RESEND_TXT_RESEND: process.env.NEXT_PUBLIC_RESEND_TXT_RESEND,
+   NEXT_PUBLIC_BASEURL: process.env.NEXT_PUBLIC_BASEURL,
+});
 
-if ( error ) {
+console.log( "error: ", error);
+console.log( "error: ", !!error);
+
+if ( !!error ) {
    throw new Error(`Config validation error: ${ error.message }`);
 }
 
