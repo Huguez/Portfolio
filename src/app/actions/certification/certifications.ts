@@ -14,8 +14,7 @@ export const getCertifications = async (): Promise<getCerReturn> => {
 
       const { certifications } =  await fetch( `${ baseUrl }/certifications` ).then( resp => resp.json() )
       
-      return {
-         
+      return {  
          certifications,
       }
    } catch (error) {

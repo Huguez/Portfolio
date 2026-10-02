@@ -9,6 +9,7 @@ export { default as WhoIam } from "./pageComponents/WhoIam"
 export { default as Hello } from "./pageComponents/Hello"
 export { default as Projects } from "./pageComponents/Projects"
 export { default as Experience } from "./pageComponents/Experience"
+export { LoginForm } from "./pageComponents/loginForm/LoginForm"
 
 export { ProjectCard } from "./ui/ProjectCard"
 export { CertificateCard } from "./ui/CertificateCard"

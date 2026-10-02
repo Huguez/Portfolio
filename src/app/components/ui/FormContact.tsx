@@ -34,7 +34,6 @@ export function ContactForm() {
    const [ mailSend, setMailSend ] = useState<mailI>( { send: false, msg: <></> } )
    const { loading } = useUI() 
    
-
    const { errors, touched, getFieldProps, handleSubmit } = useFormik( { 
       initialValues,
       onSubmit: async  ( values : FormValuesI, { resetForm } ) => {
@@ -80,7 +79,7 @@ export function ContactForm() {
                <input type="text" { ...getFieldProps("email") } 
                   className={ `${ errors.email && touched.email ? 
                      "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500" : 
-                     "text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "  } rounded-lg block w-full p-2.5 `} 
+                     "text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "  } rounded-lg block w-full p-2.5`} 
                   placeholder="E-mail" autoComplete="off" 
                />
                { errors.email && touched.email && <p className="mt-2 text-sm text-red-600 "><span className="font-medium">Oops!</span> { errors.email }</p> }
@@ -96,6 +95,7 @@ export function ContactForm() {
                { errors.subject && touched.subject && <p className="mt-2 text-sm text-red-600 "><span className="font-medium">Oops!</span> { errors.subject }</p> }
             </div>
          </div>
+
          <div className="flex flex-col sm:gap-5" >      
             <textarea rows={ 4 } { ...getFieldProps("message") } 
                className={`${ errors.message && touched.message ? 
@@ -103,8 +103,8 @@ export function ContactForm() {
                "text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " } rounded-lg block p-2.5 w-full `} placeholder="Message">
             </textarea>
             { errors.message && touched.message && <p className="mt-2 text-sm text-red-600 "><span className="font-medium">Oops!</span> { errors.message }</p> }
-            
          </div>
+         
          <button type="submit" className=" w-full sm:w-2/6 sm:mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Send</button>
       </form>}
       {

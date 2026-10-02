@@ -47,7 +47,7 @@ export default function Experience( { jobs }:paramsI ) {
    }
 
    return (
-      <div ref={ ref } className={`container p-16 lg:pt-28 mx-auto ${ inView ? "fadeUpCustom" : "" }`}  >
+      <div ref={ ref } className={`container p-16 lg:pt-28 mx-auto ${ inView ? "fade-up-custom" : "" }`}  >
          <h4 className="text-center font-header text-4xl sm:text-5xl lg:text-6xl font-semibold text-blue-600 "> 
             Experience
          </h4>

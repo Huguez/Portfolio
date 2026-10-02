@@ -17,7 +17,7 @@ export default async function AboutMePage() {
    const { image, description } = await getAboutMe()
    
    return (
-      <div className="container mx-auto pt-0 sm:py-16 fadeUpCustom">
+      <div className="container mx-auto pt-0 sm:py-16 fade-up-custom">
       
          <div className="block sm:flex sm:justify-between sm:gap-10 mt-0" >
             <div className="w-full sm:w-2/6 mb-7 sm:mb-0 ">

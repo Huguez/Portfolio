@@ -25,9 +25,6 @@ const { error, value } = envSchema.validate({
    NEXT_PUBLIC_BASEURL: process.env.NEXT_PUBLIC_BASEURL,
 });
 
-console.log( "error: ", error);
-console.log( "error: ", !!error);
-
 if ( !!error ) {
    throw new Error(`Config validation error: ${ error.message }`);
 }

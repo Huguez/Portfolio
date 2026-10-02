@@ -23,6 +23,6 @@
   }
 }
 
-.fadeUpCustom{
+.fade-up-custom{
   @apply animate-fade-up animate-once animate-duration-[800ms] animate-delay-[400ms]
 }
