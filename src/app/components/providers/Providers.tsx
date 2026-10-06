@@ -1,6 +1,6 @@
 'use client';
 
-import { UIProvider } from "@/context";
+import { StorageProvider, UIProvider } from "@/context";
 
 interface propsProviders {
    children: React.ReactNode;
@@ -9,7 +9,9 @@ interface propsProviders {
 export default function Providers( { children }: propsProviders ) {
    return (
       <UIProvider>
-         { children }
+         <StorageProvider>
+            { children }
+         </StorageProvider>
       </UIProvider>
    );
 }

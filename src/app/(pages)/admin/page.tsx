@@ -1,8 +1,7 @@
 import { LoginForm } from "@/components";
 
-
 export default async function AdminPage() {
-   
+
    return (
       <div className="mx-auto mt-3 sm:mt-10 px-5 sm:px-10 ">
          <div className="mx-auto max-w-4xl">
