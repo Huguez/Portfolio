@@ -4,7 +4,7 @@ import { env } from "@/config/env-var";
 
 const baseUrl = env.NEXT_PUBLIC_BASEURL
 
-export default function ButtonCV() {
+export default function DownloadCV() {
    
    const getCV = async () => {
       try{

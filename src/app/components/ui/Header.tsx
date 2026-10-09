@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link";
-import { ButtonCV } from "@/components"
+import { DownloadCV, UploadCV } from "@/components"
 import { useStorage, useUI } from "@/context";
 import { logout } from "@/actions";
 import { useRouter } from "next/navigation";
@@ -12,55 +12,56 @@ interface HeaderProps {
    authenticated: boolean;
 }
 
-export default function Header({ authenticated }:HeaderProps) {
+export default function Header({ authenticated }: HeaderProps) {
 
    const baseRoute = !authenticated ? "/" : "/admin"
-   
+
    const { showSidebar, handleSidebar } = useUI()
    const { deleteValue } = useStorage()
    const router = useRouter()
    const { loading } = useUI();
-   
-   const handleLogout = async () => {
+
+   const handleLogout = async (): Promise<void> => {
       loading.run()
       await logout()
       deleteValue("user")
       router.replace("/")
-      loading.stop()
+      setTimeout( () => {
+         loading.stop()
+      }, 2000 )
    }
 
-   const handlePath = ( href: string = "" ): string => {
+   const handlePath = (href: string = ""): string => {
       const path = baseRoute + href
       return path
    }
-   
+
    return (
       <nav className=" bg-white">
          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <Link href={ baseRoute } className="flex items-center space-x-3 rtl:space-x-reverse">
-               <Image src="/imgs/H-black.jpg" className="rounded-lg" alt="Logo Carlos Huguez's portfolio" width={ 50 } height={ 50 } />
+            <Link href={baseRoute} className="flex items-center space-x-3 rtl:space-x-reverse">
+               <Image src="/imgs/H-black.jpg" className="rounded-lg" alt="Logo Carlos Huguez's portfolio" width={50} height={50} />
                <span className="hidden sm:block self-center text-3xl whitespace-nowrap font-bold text-zinc-600">Portfolio</span>
             </Link>
 
-            <Link href={ handlePath() } className="block sm:hidden text-center text-lg whitespace-nowrap font-bold text-zinc-600">Portfolio</Link>
+            <Link href={handlePath()} className="block sm:hidden text-center text-lg whitespace-nowrap font-bold text-zinc-600">Portfolio</Link>
 
-            <button onClick={ () => handleSidebar( !showSidebar ) }  className="inline-flex items-center focus:outline-none focus:ring-2 text-blue-400 hover:bg-blue-100 focus:ring-blue-200 p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden " data-collapse-toggle="navbar-default" type="button"  aria-controls="navbar-default" aria-expanded="false">
+            <button onClick={() => handleSidebar(!showSidebar)} className="inline-flex items-center focus:outline-none focus:ring-2 text-blue-400 hover:bg-blue-100 focus:ring-blue-200 p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden " data-collapse-toggle="navbar-default" type="button" aria-controls="navbar-default" aria-expanded="false">
                <span className="sr-only">Open main menu</span>
                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
                </svg>
             </button>
 
             <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                <ul className=" flex flex-row p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:mt-0  ">
-
                   {
                      !authenticated && (
                         <li>
                            <Link
-                              href={ handlePath() }
+                              href={handlePath()}
                               className="block py-2 px-3 md:p-0 text-gray-900 hover:text-zinc-600 font-bold "
-                              >
+                           >
                               Home
                            </Link>
                         </li>
@@ -69,49 +70,44 @@ export default function Header({ authenticated }:HeaderProps) {
 
                   <li>
                      <Link
-                        href={ handlePath("/aboutMe") }
+                        href={handlePath("/aboutMe")}
                         className="block py-2 px-3 md:p-0 hover:text-zinc-600 font-bold text-gray-900 transition-all duration-300"
                      >
                         About Me
                      </Link>
                   </li>
-                  
+
                   <li>
                      <Link
-                        href={ handlePath( "/projects" ) } 
+                        href={handlePath("/projects")}
                         className="block py-2 px-3 md:p-0 text-gray-900 hover:text-zinc-600 font-bold "
                      >
                         Projects
                      </Link>
                   </li>
-
                   {
-                     !authenticated ? 
+                     !authenticated ?
                         <li>
-                           <Link 
+                           <Link
                               href="contact"
                               className="block py-2 px-3 md:p-0 rounded  hover:text-zinc-600 font-bold text-gray-900 transition-all	duration-300 "
                            >
                               Contact
                            </Link>
                         </li>
-                     :
+                        :
                         <li>
                            <span
-                              onClick={ handleLogout }
+                              onClick={handleLogout}
                               className="outline-none cursor-pointer rounded-lg py-2 px-4 bg-red-600 hover:bg-red-800 text-sm text-white font-bold transition-all duration-300"
                            >
                               Log out
                            </span>
                         </li>
                   }
-
                   <li>
                      {
-                        authenticated ?
-                           <ButtonCV /> // DownloadCV
-                            : 
-                           <ButtonCV /> // UploadCV
+                        !authenticated ? <DownloadCV /> : <UploadCV />
                      }
                   </li>
                </ul>
