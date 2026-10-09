@@ -3,10 +3,12 @@
 import React from 'react'
 import styles from './LoginForm.module.scss'
 import * as Yup from 'yup';
-import { useUI } from '@/context';
+import { useStorage, useUI } from '@/context';
 import { useFormik } from 'formik';
 import { login } from '@/actions';
 import { useRouter } from "next/navigation";
+import { toast } from 'sonner';
+
 
 interface FormValuesI {
    email: string;
@@ -14,8 +16,8 @@ interface FormValuesI {
 }
 
 const initialValues: FormValuesI = {
-   email:    "",
-   password: "",
+   email:    "carlos.huguez@gmail.com",
+   password: "05/11/1989-Hgz",
 }
 
 const validationSchema = Yup.object({
@@ -23,12 +25,11 @@ const validationSchema = Yup.object({
    password: Yup.string().required("Password is required"),
 });
 
-interface LoginFormProps { }
-
-export const LoginForm = ({ }: LoginFormProps) => {
+export const LoginForm = () => {
    const router = useRouter();
    const { loading } = useUI();
-
+   const { setValue, deleteValue } = useStorage()
+   
    const { errors, touched, getFieldProps, handleSubmit } = useFormik({
       initialValues,
       onSubmit: async (values: FormValuesI, { resetForm },) => {
@@ -38,14 +39,20 @@ export const LoginForm = ({ }: LoginFormProps) => {
          const resp = await login(values.email, values.password);
 
          if (!resp.ok) {
-            // TODO: Handle failed login (e.g., show error message)
+            loading.stop();
+            resetForm();
+            deleteValue("usr");
+            toast.error(`Login failed: ${ resp.error || "Unknown error" }`);
+            return;
          }
 
-         // TODO: Handle successful login (e.g., redirect, show success message)
          resetForm();
-         
-         router.push("/admin");
-         loading.stop();
+         setValue( "user", resp.user );
+         router.push( "/admin");
+         setTimeout( () => {
+            toast.success(`Welcome back, ${ resp.user?.username || "Hacker" } !!!`);
+            loading.stop();
+         }, 2000 )
       },
       validationSchema,
    })
@@ -54,7 +61,7 @@ export const LoginForm = ({ }: LoginFormProps) => {
       <div className={styles.loginForm}>
          <form onSubmit={handleSubmit} className="flex flex-col gap-5 my-5 sm:my-10" >
 
-            <div className="flex flex-col gap-3 mx-auto w-full sm:w-2/3 md:w-1/2 ">
+            <div className="flex flex-col gap-3 mx-auto w-full ">
                <input type="text" {...getFieldProps("email")}
                   className={`${errors.email && touched.email ?
                      "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500" :
@@ -66,7 +73,7 @@ export const LoginForm = ({ }: LoginFormProps) => {
                {errors.email && touched.email && <p className="mt-2 text-sm text-red-600 "><span className="font-medium">Oops!</span> {errors.email}</p>}
             </div>
 
-            <div className="flex flex-col gap-3 mx-auto w-full sm:w-2/3 md:w-1/2 ">
+            <div className="flex flex-col gap-3 mx-auto w-full ">
                <input type="password" {...getFieldProps("password")}
                   className={`${errors.password && touched.password ?
                      "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500" :
@@ -80,7 +87,7 @@ export const LoginForm = ({ }: LoginFormProps) => {
 
             <button
                type="submit"
-               className="w-full sm:w-2/3 md:w-1/2 sm:mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
+               className="w-full sm:mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
             >
                Log-in
             </button>

@@ -37,7 +37,7 @@ export default function ButtonCV() {
    return <>
       <span
          onClick={ getCV }
-         className="outline-none cursor-pointer	 font-bold text-white bg-blue-600 hover:bg-blue-800 rounded-lg text-sm py-2 px-4  "
+         className="outline-none cursor-pointer	 font-bold text-white bg-blue-600 hover:bg-blue-800 rounded-lg text-sm py-2 px-4"
       >
          Download CV
       </span>

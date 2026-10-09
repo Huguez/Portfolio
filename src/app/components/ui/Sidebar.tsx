@@ -6,7 +6,11 @@ import { IoMdMail } from "react-icons/io";
 import { ButtonCV } from "@/components"
 import { useUI } from "@/context";
 
-export default function Sidebar() {
+interface SidebarProps {
+   authenticated: boolean;
+}
+
+export default function Sidebar({authenticated}: SidebarProps ) {
    const { showSidebar, handleSidebar } = useUI()
 
    return <>
