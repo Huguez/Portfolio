@@ -14,7 +14,7 @@ interface HeaderProps {
 
 export default function Header({ authenticated }: HeaderProps) {
 
-   const baseRoute = !authenticated ? "/" : "/admin"
+   const baseRoute = !authenticated ? "" : "/admin"
 
    const { showSidebar, handleSidebar } = useUI()
    const { deleteValue } = useStorage()
@@ -39,12 +39,12 @@ export default function Header({ authenticated }: HeaderProps) {
    return (
       <nav className=" bg-white">
          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <Link href={baseRoute} className="flex items-center space-x-3 rtl:space-x-reverse">
+            <Link href={handlePath("/")} className="flex items-center space-x-3 rtl:space-x-reverse">
                <Image src="/imgs/H-black.jpg" className="rounded-lg" alt="Logo Carlos Huguez's portfolio" width={50} height={50} />
                <span className="hidden sm:block self-center text-3xl whitespace-nowrap font-bold text-zinc-600">Portfolio</span>
             </Link>
 
-            <Link href={handlePath()} className="block sm:hidden text-center text-lg whitespace-nowrap font-bold text-zinc-600">Portfolio</Link>
+            <Link href={handlePath("/")} className="block sm:hidden text-center text-lg whitespace-nowrap font-bold text-zinc-600">Portfolio</Link>
 
             <button onClick={() => handleSidebar(!showSidebar)} className="inline-flex items-center focus:outline-none focus:ring-2 text-blue-400 hover:bg-blue-100 focus:ring-blue-200 p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden " data-collapse-toggle="navbar-default" type="button" aria-controls="navbar-default" aria-expanded="false">
                <span className="sr-only">Open main menu</span>
@@ -59,7 +59,7 @@ export default function Header({ authenticated }: HeaderProps) {
                      !authenticated && (
                         <li>
                            <Link
-                              href={handlePath()}
+                              href={handlePath("/")}
                               className="block py-2 px-3 md:p-0 text-gray-900 hover:text-zinc-600 font-bold "
                            >
                               Home

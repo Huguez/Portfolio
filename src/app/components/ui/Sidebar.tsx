@@ -14,7 +14,7 @@ interface SidebarProps {
 export default function Sidebar({ authenticated }: SidebarProps) {
    const { showSidebar, handleSidebar } = useUI()
 
-   const baseRoute = !authenticated ? "/" : "/admin"
+   const baseRoute = !authenticated ? "" : "/admin"
 
    const { deleteValue } = useStorage()
    const router = useRouter()
@@ -47,9 +47,9 @@ export default function Sidebar({ authenticated }: SidebarProps) {
 
             <ul className="space-y-2 font-medium">
             
-               <li className="flex justify-between mt-1">
+               <li className="flex justify-between mt-1" onClick={ () => handleSidebar(false) }>
                   <Link
-                     href={handlePath()}
+                     href={handlePath("/")}
                      className="w-full flex items-center p-2 transition duration-300 font-bold text-zinc-600 hover:text-gray-100 rounded-lg hover:bg-blue-500"
                   >
                      <FaHome />
@@ -69,9 +69,9 @@ export default function Sidebar({ authenticated }: SidebarProps) {
             
             
 
-               <li>
+               <li onClick={ () => handleSidebar(false) }>
                   <Link
-                     href={handlePath("aboutMe")}
+                     href={handlePath("/aboutMe")}
                      className="flex items-center p-2 transition duration-300 font-bold text-zinc-600 hover:text-gray-100 rounded-lg  hover:bg-blue-500"
                   >
                      <FaRegUserCircle />
@@ -79,9 +79,9 @@ export default function Sidebar({ authenticated }: SidebarProps) {
                   </Link>
                </li>
 
-               <li>
+               <li onClick={ () => handleSidebar(false) }>
                   <Link
-                     href={handlePath("projects")}
+                     href={handlePath("/projects")}
                      className="flex items-center p-2 font-bold text-zinc-600 hover:text-gray-100 rounded-lg  hover:bg-blue-500   transition-all duration-300"
                   >
                      <FaCode className="mr-1" />
@@ -91,7 +91,7 @@ export default function Sidebar({ authenticated }: SidebarProps) {
 
                {
                   !authenticated ?
-                     <li>
+                     <li onClick={ () => handleSidebar(false) }>
                         <Link
                            href="contact"
                            className="flex items-center p-2 font-bold text-zinc-600 hover:text-gray-100 rounded-lg  hover:bg-blue-500   transition-all duration-300"
@@ -101,7 +101,7 @@ export default function Sidebar({ authenticated }: SidebarProps) {
                         </Link>
                      </li>
                      :
-                     <li className="pt-1">
+                     <li className="pt-1" onClick={ () => handleSidebar(false) }>
                         <span
                            onClick={handleLogout}
                            className="outline-none cursor-pointer rounded-lg py-2 px-4 bg-red-600 hover:bg-red-800 text-sm text-white font-bold transition-all duration-300"
@@ -111,7 +111,7 @@ export default function Sidebar({ authenticated }: SidebarProps) {
                      </li>
                }
                
-               <li className="pt-3">
+               <li className="pt-3" onClick={ () => handleSidebar(false) }>
                   {
                      !authenticated ? <DownloadCV /> : <UploadCV />
                   }
