@@ -27,8 +27,6 @@ export async function getSession(): Promise<Session> {
          algorithms: ["HS256"],
       });
 
-      console.log("Session validated successfully:", resp);
-
       return {
          authenticated: true,
       };

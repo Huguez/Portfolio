@@ -10,6 +10,16 @@ const nextConfig = {
             hostname: 'img-c.udemycdn.com',
             port: '',
             pathname: '/**/**',
+         },{
+            protocol: 'https',
+            hostname: 'res.cloudinary.com',
+            port: '',
+            pathname: '/**/**',
+         },{
+            protocol: 'https',
+            hostname: 'udemy-certificate.s3.amazonaws.com',
+            port: '',
+            pathname: '/**/**',
          }
       ]
    }

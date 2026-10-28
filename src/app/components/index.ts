@@ -1,3 +1,4 @@
+
 export { default as  Header} from "./ui/Header"
 export { default as  Footer} from "./ui/Footer"
 export { default as  Sidebar} from "./ui/Sidebar"
@@ -10,12 +11,16 @@ export { default as WhoIam } from "./pageComponents/WhoIam"
 export { default as Hello } from "./pageComponents/Hello"
 export { default as Projects } from "./pageComponents/Projects"
 export { default as Experience } from "./pageComponents/Experience"
-export { LoginForm } from "./pageComponents/loginForm/LoginForm"
 
 export { ProjectCard } from "./ui/ProjectCard"
 export { CertificateCard } from "./ui/CertificateCard"
 export { default as SlideShow } from "./ui/slideShow/SlideShow"
 export { ContactForm } from "./ui/FormContact"
+export { AboutMeForm } from "./ui/AboutMeForm"
+export { LoginForm } from "./ui/loginForm/LoginForm"
+export { ImageFace } from "./ui/ImageFace"
+export { BaseModal } from "./ui/base-modal"
+export { FormCertification } from "./ui/Form-certification"
 
 export { default as Loading } from "./ui/Loading"
 export { default as Spinner  } from "./ui/Spinner"

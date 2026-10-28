@@ -1,11 +1,15 @@
 "use client"
 
+import { certificateI } from "@/interfaces";
 import { createContext, useContext, useState } from "react";
 
 interface initValuesI {
+   showModal: boolean;
+   handleShowModal: (_?:certificateI) => void;
+   handleHideModal: () => void;
+   certification: certificateI | undefined;
    showSidebar: boolean;
    handleSidebar: ( value: boolean ) => void;
-
    loading: {
       show: boolean;
       stop: () => void;
@@ -14,9 +18,12 @@ interface initValuesI {
 }
 
 const initValues = {
+   showModal: false,
+   handleShowModal: (_?:certificateI) => {},
+   handleHideModal: () => {},
+   certification: undefined,
    showSidebar: false,
    handleSidebar: ( value: boolean ) => {},
-
    loading: {
       show: false,
       stop: () => {},
@@ -36,6 +43,9 @@ interface UIProps {
 
 export function UIProvider( props: UIProps ) {
 
+   const [ showModal, setShowModal ] = useState<boolean>(false)
+   
+   const [certification, setCertification] = useState<certificateI| undefined>()
    const [ showSidebar, setShowSidebar ] = useState<boolean>( false )
    const [ show, setShow ] = useState<boolean>( false )
 
@@ -54,7 +64,26 @@ export function UIProvider( props: UIProps ) {
       setShow( true )
    }
 
+   const handleShowModal = (_certification?:certificateI) => {
+      if ( _certification ) {
+         setCertification( _certification )
+      }else{
+         setCertification( undefined )
+      }
+
+      setShowModal(  true )
+   }
+
+   const handleHideModal = () => {
+      setShowModal(  false )
+      setCertification( undefined )
+   }
+
    const values = {
+      showModal,
+      handleShowModal,
+      handleHideModal,
+      certification,
       showSidebar,
       handleSidebar,
       loading: {

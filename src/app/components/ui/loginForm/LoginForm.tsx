@@ -16,8 +16,8 @@ interface FormValuesI {
 }
 
 const initialValues: FormValuesI = {
-   email:    "carlos.huguez@gmail.com",
-   password: "05/11/1989-Hgz",
+   email:    "",
+   password: "",
 }
 
 const validationSchema = Yup.object({
@@ -41,13 +41,14 @@ export const LoginForm = () => {
          if (!resp.ok) {
             loading.stop();
             resetForm();
-            deleteValue("usr");
+            deleteValue("user");
             toast.error(`Login failed: ${ resp.error || "Unknown error" }`);
             return;
          }
 
          resetForm();
          setValue( "user", resp.user );
+         setValue("token", resp.token )
          router.push( "/admin");
          setTimeout( () => {
             toast.success(`Welcome back, ${ resp.user?.username || "Hacker" } !!!`);

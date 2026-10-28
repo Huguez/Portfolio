@@ -37,35 +37,25 @@ export function ContactForm() {
    const { errors, touched, getFieldProps, handleSubmit } = useFormik( { 
       initialValues,
       onSubmit: async  ( values : FormValuesI, { resetForm } ) => {
-         
          loading.run()
 
          const { ok, resp, error } = await sendEmail( values )
-         
-         console.log( error );
 
-         if ( ok ) {
-            
+         if ( ok ) {   
             setTimeout( () => {
-
                loading.stop()
-
                setMailSend( { 
                   send: true , 
                   msg: <p className="text-green-600 text-center text-3xl sm:text-4xl font-bold mt-10 sm:mt-20 mb-7 "> Message send !! </p>
                } )
-
                resetForm()
-
             }, 800 )
 
          } else {
-
             setMailSend( { 
                send: true , 
                msg: <p className="text-red-600 text-center text-3xl sm:text-4xl font-bold mt-10 sm:mt-20 mb-7 "> Something got wrong !! </p> 
             } ) 
-
             loading.stop()
          }
       },

@@ -19,7 +19,7 @@ export default async function AboutMePage() {
    return (
       <div className="container mx-auto pt-0 sm:py-16 fade-up-custom">
       
-         <div className="block sm:flex sm:justify-between sm:gap-10 mt-0" >
+         <div className="block sm:flex sm:justify-between sm:gap-10 mt-0">
             <div className="w-full sm:w-2/6 mb-7 sm:mb-0 ">
                {
                   image &&
@@ -28,14 +28,17 @@ export default async function AboutMePage() {
             </div>
             <div className=" sm:mx-auto w-full sm:w-4/6  sm:pr-5 ">
                <h2 className="font-semibold uppercase md:mb-4 text-xl md:text-3xl lg:text-4xl text-center sm:text-left text-blue-600"> About Me </h2>
-               {
-                  description && 
-                  description.map( ( row, index ) => (
+                  {      
+                     description &&  (
+                        <p className="mb-4 px-5 sm:px-0 text-gray-700 text-justify text-base sm:text-md md:text-lg"> 
+                           { description }
+                        </p> )
+                  }
+                  {/* description.map( ( row, index ) => (
                      <p key={ `AboutMe-description-${ index }`}  className="mb-4 px-5 sm:px-0 text-gray-700 text-justify text-base sm:text-md md:text-lg"> 
                         { row }
                      </p> )
-                  )
-               }
+                  ) */}
             </div>
          </div>
 
