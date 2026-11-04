@@ -99,7 +99,7 @@ export default function Header({ authenticated }: HeaderProps) {
                         <li>
                            <span
                               onClick={handleLogout}
-                              className="outline-none cursor-pointer rounded-lg py-2 px-4 bg-red-600 hover:bg-red-800 text-sm text-white font-bold transition-all duration-300"
+                              className="outline-none cursor-pointer rounded-lg py-2 px-4 bg-white text-normal text-red-600 hover:underline font-bold transition-all duration-300 "
                            >
                               Log out
                            </span>

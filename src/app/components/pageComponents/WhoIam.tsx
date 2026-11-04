@@ -1,15 +1,20 @@
 'use client'
 
+import { getAboutMe } from "@/actions";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 
 
-export default function WhoIam() {
+export default async function WhoIam() {
+
+	const { skills } = await getAboutMe()
 
 	const { ref, inView } = useInView({
       threshold: 0,
    })
 
+	console.log( skills );
+	
 	return <>
 		<div ref={ ref } className={`bg-gray-50 p-16 lg:pt-28 ${ inView ? "fade-up-custom" : "" }  `}>
 			<h3  className='font-header font-semibold uppercase text-2xl sm:text-4xl lg:text-6xl text-center text-blue-600'> WHO AM I? </h3>

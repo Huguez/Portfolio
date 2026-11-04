@@ -22,5 +22,6 @@ export { ImageFace } from "./ui/ImageFace"
 export { BaseModal } from "./ui/base-modal"
 export { FormCertification } from "./ui/Form-certification"
 
+export { SkillRating } from "./ui/SkillRating"
 export { default as Loading } from "./ui/Loading"
 export { default as Spinner  } from "./ui/Spinner"

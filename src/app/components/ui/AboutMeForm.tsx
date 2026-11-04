@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { useStorage, useUI } from "@/context";
 import { useFormik } from "formik"
-import Image from "next/image"
+
 import * as Yup from 'yup';
 import { ImageFace } from "./ImageFace";
 import { putAboutMe } from "@/actions";
@@ -11,9 +11,13 @@ import { toast } from "sonner";
 import { IoIosAddCircle } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
 import { LuPencil } from "react-icons/lu";
-import { certificateI } from "@/interfaces";
+import { FaRegSave } from "react-icons/fa";
+import { certificateI, Skill, Skills } from "@/interfaces";
 import { BaseModal } from "./base-modal";
 import { FormCertification } from "./Form-certification";
+import { SkillRating } from './SkillRating';
+import { CertificationsList } from './certifications-list';
+import { SkillsList } from './Skills-list';
 
 interface IAboutMeForm {
    description: string;
@@ -30,17 +34,21 @@ const validationSchema = Yup.object({
 interface AboutMeFormProps {
    image?: string;
    description?: string[];
-   certifications?: certificateI[]
+   certifications?: certificateI[];
+   skills?: Skills;
 }
 
 export function AboutMeForm(props: AboutMeFormProps) {
 
-   const { image, description, certifications = [] } = props
+   const { image, description, certifications = [], skills = [] } = props
    const { loading, handleShowModal, showModal } = useUI()
+   const { getValue } = useStorage()
+
    const imageRef = useRef<HTMLInputElement>(null)
    const [file, setFile] = useState<File | undefined>(undefined)
    const [auxCertifications, setAuxCertifications] = useState<certificateI[]>([]);
-   const { getValue } = useStorage()
+   const [auxSkills, setAuxSkills] = useState<Skills>(skills)
+
 
    const handleFile = (event: any) => {
       const { files } = event.target
@@ -70,6 +78,11 @@ export function AboutMeForm(props: AboutMeFormProps) {
          fd.append("username", user.username)
 
          fd.append("certifications", JSON.stringify(auxCertifications))
+
+         fd.append("skills", JSON.stringify(auxSkills.map(skill => {
+            const { name, stars } = skill
+            return { name, stars }
+         })))
 
          const resp = await putAboutMe(fd, getValue("token"))
 
@@ -133,12 +146,56 @@ export function AboutMeForm(props: AboutMeFormProps) {
       handleShowModal(certification)
    }
 
+   const handleAddSkill = () => {
+      const draftSkills = [...auxSkills]
+      draftSkills.push({
+         name: "",
+         stars: 0,
+         edit: true
+      });
+      setAuxSkills(draftSkills)
+   }
+
+   const handleEditSkill = (index: number) => {
+      const newAuxSkills = [...auxSkills]
+      newAuxSkills[index].edit = true
+      setAuxSkills(newAuxSkills)
+   }
+
+   const handleDeleteSkill = (index: number) => {
+      const newAuxSkills = [...auxSkills]
+
+      setAuxSkills(newAuxSkills.filter((_, _index: number) => _index !== index))
+   }
+
+   const handleSaveSkill = (index: number, skill: Skill) => {
+
+      const newAuxSkills = [...auxSkills]
+
+      newAuxSkills[index].edit = false
+
+      setAuxSkills(newAuxSkills)
+   }
+
+   const handleChangeSkills = (index: number, e: ChangeEvent<HTMLInputElement>) => {
+      const newAuxSkills = [...auxSkills]
+      const { value, name } = e.target
+
+      if (name === 'name') {
+         newAuxSkills[index].name = value
+      } else {
+         newAuxSkills[index].stars = Number(value)
+      }
+
+      setAuxSkills(newAuxSkills)
+   }
 
    useEffect(() => {
       loading.run()
       setFieldValue('description', description)
       setFieldValue('image', image)
       setAuxCertifications(certifications)
+      setAuxSkills(skills)
       setTimeout(() => loading.stop(), 1000)
    }, [])
 
@@ -148,13 +205,35 @@ export function AboutMeForm(props: AboutMeFormProps) {
             <FormCertification onAdd={handleAddCertification} />
          </BaseModal>
       }
-      <div className="mx-auto px-10 sm:px-0">
 
-         <form onSubmit={handleSubmit} className="flex flex-col w-full gap-5 my-5 sm:my-10 ">
+      <div className="w-full max-w-screen-2xl min-w-0 mx-auto px-7 mt-5">
 
-            <div className="flex flex-col sm:flex-row gap-5 ">
-               <div className="flex flex-col w-full max-w-xl mx-auto">
-                  <ImageFace img={image} file={file} onClick={() => imageRef.current?.click()} />
+         <form
+            onSubmit={handleSubmit}
+            className="flex flex-col w-full min-w-0 gap-5"
+         >
+            <div className="flex flex-row items-center justify-between gap-3">
+               <h3 className="min-w-0 font-semibold uppercase text-lg md:text-2xl lg:text-3xl text-blue-600">
+                  About me
+               </h3>
+
+               <button
+                  className="shrink-0 outline-none cursor-pointer font-bold text-white bg-blue-600 hover:bg-blue-800 rounded-lg text-sm py-2 px-5 sm:px-8"
+                  type="submit"
+               >
+                  Save
+               </button>
+            </div>
+
+
+            <div className="flex flex-col md:flex-row w-full min-w-0 gap-5">
+               <div className="flex flex-col items-center w-full md:w-auto md:shrink-0 min-w-0">
+                  <ImageFace
+                     img={image}
+                     file={file}
+                     onClick={() => imageRef.current?.click()}
+                  />
+
                   <input
                      ref={imageRef}
                      onChange={handleFile}
@@ -164,73 +243,47 @@ export function AboutMeForm(props: AboutMeFormProps) {
                   />
                </div>
 
-               <div className="flex flex-col w-full mx-auto">
+               <div className="flex flex-col w-full min-w-0">
                   <textarea
-                     rows={4} {...getFieldProps("description")}
+                     rows={4}
+                     {...getFieldProps("description")}
                      placeholder="Description"
-                     className={`${errors.description && touched.description ?
-                        "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500" :
-                        "text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "} rounded-lg block p-2.5 w-full mx-auto align-middle h-full `}
-                  >
-                  </textarea>
-                  {errors.description && touched.description && <p className="mt-2 text-sm text-red-600 "><span className="font-medium">Oops!</span> {errors.description}</p>}
+                     className={`w-full max-w-full min-w-0 rounded-lg block p-2.5 align-middle min-h-96 resize-y ${errors.description && touched.description
+                        ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500"
+                        : "text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        }`}
+                  />
 
+                  {errors.description && touched.description && (
+                     <p className="mt-2 text-sm text-red-600">
+                        <span className="font-medium">Oops,</span> {errors.description}!
+                     </p>
+                  )}
                </div>
+
             </div>
-
-            <button
-               className="outline-none cursor-pointer	font-bold text-white bg-blue-600 hover:bg-blue-800 rounded-lg text-sm py-2 px-4 w-full md:w-2/3 lg:w-1/2 mx-auto"
-               type="submit"
-            >
-               Save
-            </button>
          </form>
-
       </div>
 
-      <hr className="bg-gray-200 h-0.5 w-10/12 mx-auto my-10" />
+      <hr className="bg-gray-200 h-0.5 w-8/12 max-w-screen-2xl mx-auto my-10" />
 
-      <div className="block w-full mx-auto px-10 sm:px-0">
+      <div className='w-full max-w-screen-2xl flex flex-col md:flex-row justify-between gap-5 mx-auto px-7 mb-5'>
 
-         <div className="flex justify-between mb-4">
-            <h3 className="font-semibold uppercase mb-4 text-lg md:text-2xl lg:text-3xl text-center sm:text-left text-blue-600"> Certifications </h3>
+         <CertificationsList
+            certifications={auxCertifications}
+            handleShowModal={handleShowModal}
+            handleDeleteCertification={handleDeleteCertification}
+            handleEditCertification={handleEditCertification}
+         />
 
-            <button
-               onClick={() => handleShowModal()}
-               className="cursor-pointer font-bold text-green-600 bg-transparent hover:text-green-800 text-5xl">
-               <IoIosAddCircle />
-            </button>
-         </div>
-         <div className="overflow-y-auto h-80 px-4 border rounded-lg">
-            {
-               auxCertifications.map((cer) => (
-                  <section key={`certification-item-${cer.title}`} className="flex flex-col sm:flex-row items-center p-0 bg-white border border-gray-200 rounded-lg my-5 shadow ">
-                     <Image
-                        src={cer.imagen}
-                        alt={cer.link}
-                        className="rounded-tl-lg rounded-tr-lg rounded-bl-none sm:rounded-bl-lg sm:rounded-tr-none w-1/12 m-0 p-0"
-                        width={80}
-                        height={50}
-                     />
-                     <div className="flex flex-row justify-between px-4 m-auto w-full ">
-
-                        <h5 className="mb-2 truncate lg:whitespace-normal sm:text-left text-sm md:text-base font-semibold tracking-tight text-gray-900 "> {cer.title} </h5>
-
-                        <div className="flex flex-row gap-5">
-
-                           <button title="Delete" className="text-xl text-red-500" onClick={() => handleDeleteCertification(cer)}>
-                              <FaTrashAlt />
-                           </button>
-                           <button title="Edit" className="text-xl text-blue-500" onClick={() => handleEditCertification(cer)} >
-                              <LuPencil />
-                           </button>
-                        </div>
-
-                     </div>
-                  </section>
-               ))
-            }
-         </div>
+         <SkillsList
+            skills={ auxSkills }
+            handleAddSkill={ handleAddSkill }
+            handleChangeSkills={ handleChangeSkills }
+            handleSaveSkill={ handleSaveSkill }
+            handleDeleteSkill={ handleDeleteSkill }
+            handleEditSkill={ handleEditSkill }
+         />
       </div>
    </>)
 }

@@ -32,14 +32,14 @@ export const ImageFace = ({ img, file, onClick }: ImageFaceProps) => {
    return (
       <div
          onClick={onClick}
-         className="border-dotted border-2 border-slate-50 hover:border-slate-500 hover:bg-slate-400 rounded-lg mx-auto flex align-middle max-w-max"
+        className="w-full max-w-[400px] min-w-0 mx-auto border-2 border-dotted border-slate-300 hover:border-slate-500 hover:bg-slate-100 rounded-lg overflow-hidden cursor-pointer transition-colors"
       >
          <Image
             src={ url }
-            className="rounded-lg w-full cursor-pointer mx-auto flex align-middle"
-            alt={'Carlos Huguez'}
+             className="block w-full h-auto object-contain rounded-lg"
+            alt={ url }
             width={400}
-            height={500}
+            height={100}
          />
       </div>
    )

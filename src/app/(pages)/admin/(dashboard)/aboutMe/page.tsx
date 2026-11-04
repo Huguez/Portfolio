@@ -6,7 +6,7 @@ export default async function AboutMePage() {
    const resp = await getAboutMe()
 
    return (
-      <div className="container mx-auto pt-0 sm:py-16">
+      <div className="mx-auto max-w-screen-2xl min-w-0">
          <AboutMeForm {...resp} />
       </div>
    )
