@@ -1,12 +1,12 @@
 
-export const formatDate = ( fecha: string ): string => {
-      const [ year, mounth, ..._ ] = fecha.slice( 0, 10 ).split( "-" )
+export const formatDate = ( _date: string ): string => {
+      const [ year, month, ..._ ] = _date.slice( 0, 10 ).split( "-" )
 
-      switch( mounth ){
+      switch( month ){
          case "01":
             return `January ${ year }`
          case "02":
-            return `Febrary ${ year }`
+            return `February ${ year }`
          case "03":
             return `Mars ${ year }`
          case "04":

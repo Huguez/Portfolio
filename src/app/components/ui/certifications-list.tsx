@@ -32,7 +32,7 @@ export const CertificationsList = ({ handleDeleteCertification, handleEditCertif
                certifications.map((cer) => (
                   <section key={`certification-item-${cer.title}`} className="flex flex-col lg:flex-row items-center p-0 bg-white border border-gray-200 rounded-lg shadow ">
                      <Image
-                        src={cer.imagen}
+                        src={cer.image}
                         alt={cer.link}
                         className="rounded-tl-lg rounded-tr-lg rounded-bl-none sm:rounded-bl-lg sm:rounded-tr-none w-full lg:w-2/12"
                         width={100}

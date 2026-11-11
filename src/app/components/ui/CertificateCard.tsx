@@ -4,13 +4,11 @@ import Image from "next/image"
 import Link from "next/link"
 import placeholder from '/public/imgs/placeholder.jpg';
 import { certificateI } from "@/interfaces";
-
 import { useInView } from "react-intersection-observer";
-
 
 interface Props {}
 
-export function CertificateCard( { imagen, title, link }:Props & certificateI ) {
+export function CertificateCard( { image, title, link }:Props & certificateI ) {
    const { ref, inView } = useInView({
       threshold: 0,
 		triggerOnce: true,
@@ -19,9 +17,9 @@ export function CertificateCard( { imagen, title, link }:Props & certificateI ) 
    return (
       <section ref={ref} className={`flex flex-col  sm:flex-row items-center p-0 bg-white border border-gray-200 rounded-lg m-5 shadow max-w-3xl ${ inView ? "fade-up-custom " : " " }`}>
          <Image 
-            src={ imagen ?? placeholder.src } 
+            src={ image ?? placeholder.src } 
             className="rounded-tl-lg rounded-tr-lg rounded-bl-none  sm:rounded-bl-lg sm:rounded-tr-none w-full sm:w-1/2 m-0 p-0"
-            alt={ imagen } 
+            alt={ image } 
             width={200}  
             height={200}
          />

@@ -8,13 +8,13 @@ import { useUI } from '@/context'
 
 const initialValues: certificateI = {
    title: "",
-   imagen: "",
+   image: "",
    link: "",
 }
 
 const validationSchema = Yup.object({
    title: Yup.string().required("Title is required"),
-   imagen: Yup.string().required("Image is required"),
+   image: Yup.string().required("Image is required"),
    link: Yup.string().required("Link is required"),
 });
 
@@ -38,7 +38,7 @@ export const FormCertification = ( { onAdd }:FormCertificationProps ) => {
    useEffect( () => {
       if(certification){
          setFieldValue("title", certification.title)
-         setFieldValue("imagen", certification.imagen)
+         setFieldValue("image", certification.image)
          setFieldValue("link", certification.link)
       }
    }, [])
@@ -68,13 +68,13 @@ export const FormCertification = ( { onAdd }:FormCertificationProps ) => {
             </div>
 
             <div>
-               <input type="text" {...getFieldProps("imagen")}
-                  className={`${errors.imagen && touched.imagen ?
+               <input type="text" {...getFieldProps("image")}
+                  className={`${errors.image && touched.image ?
                      "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500" :
                      "text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "} rounded-lg block w-full p-2.5`}
-                  placeholder="Imagen" autoComplete="off"
+                  placeholder="Image" autoComplete="off"
                />
-               {errors.imagen && touched.imagen && <p className="mt-2 text-sm text-red-600 "><span className="font-medium">Oops!</span> {errors.imagen}</p>}
+               {errors.image && touched.image && <p className="mt-2 text-sm text-red-600 "><span className="font-medium">Oops!</span> {errors.image}</p>}
             </div>
 
             <div>

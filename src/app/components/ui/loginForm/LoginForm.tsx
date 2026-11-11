@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import { login } from '@/actions';
 import { useRouter } from "next/navigation";
 import { toast } from 'sonner';
+import { getShortName } from '@/helpers';
 
 
 interface FormValuesI {
@@ -51,7 +52,7 @@ export const LoginForm = () => {
          setValue("token", resp.token )
          router.push( "/admin");
          setTimeout( () => {
-            toast.success(`Welcome back, ${ resp.user?.username || "Hacker" } !!!`);
+            toast.success(`Welcome back, ${ getShortName( resp.user?.fullname || "Hacker"  ) } !!!`);
             loading.stop();
          }, 2000 )
       },

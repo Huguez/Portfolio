@@ -69,7 +69,7 @@ export function AboutMeForm(props: AboutMeFormProps) {
 
          const user = getValue("user")
 
-         fd.append("username", user.username)
+         fd.append("fullname", user.fullname)
 
          fd.append("certifications", JSON.stringify(auxCertifications))
 
@@ -98,13 +98,13 @@ export function AboutMeForm(props: AboutMeFormProps) {
 
    const handleAddCertification = (values: certificateI, edit: boolean = false) => {
 
-      const { imagen, title, link } = values
+      const { image, title, link } = values
 
       const newCertificationList = [...auxCertifications]
 
       if (!edit) {
          newCertificationList.push({
-            imagen,
+            image,
             title,
             link
          })
@@ -116,7 +116,7 @@ export function AboutMeForm(props: AboutMeFormProps) {
       const index = newCertificationList.findIndex(cer => cer.title === title)
 
       newCertificationList[index] = {
-         imagen,
+         image,
          title,
          link
       }
