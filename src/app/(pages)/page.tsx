@@ -1,6 +1,7 @@
 import { Metadata } from "next/types";
 
 import { Hello, Projects, WhoIam, Experience } from "@/components";
+import { getAboutMe } from "@/actions";
 import { getJobs } from "@/actions";
 
 
@@ -13,12 +14,14 @@ export default async function Home() {
 
 	const { jobs }  = await getJobs();
 
+	const { skills = [] } = await getAboutMe();
+
 	return (
 		<main className="bg-gray-50 min-h-screen">
 		
 			<Hello />
 
-			<WhoIam />
+			<WhoIam skills={skills} />
       
 			<Experience jobs={ jobs } />
       

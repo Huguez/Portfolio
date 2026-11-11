@@ -7,7 +7,6 @@ import { useStorage, useUI } from "@/context";
 import { logout } from "@/actions";
 import { useRouter } from "next/navigation";
 
-
 interface HeaderProps {
    authenticated: boolean;
 }
@@ -76,6 +75,19 @@ export default function Header({ authenticated }: HeaderProps) {
                         About Me
                      </Link>
                   </li>
+
+                  {
+                     authenticated && (
+                        <li>
+                           <Link
+                              href={handlePath("/experience")}
+                              className="block py-2 px-3 md:p-0 text-gray-900 hover:text-zinc-600 font-bold "
+                           >
+                              Experience
+                           </Link>
+                        </li>
+                     )
+                  }
 
                   <li>
                      <Link

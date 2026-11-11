@@ -3,19 +3,13 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { useStorage, useUI } from "@/context";
 import { useFormik } from "formik"
-
 import * as Yup from 'yup';
 import { ImageFace } from "./ImageFace";
 import { putAboutMe } from "@/actions";
 import { toast } from "sonner";
-import { IoIosAddCircle } from "react-icons/io";
-import { FaTrashAlt } from "react-icons/fa";
-import { LuPencil } from "react-icons/lu";
-import { FaRegSave } from "react-icons/fa";
 import { certificateI, Skill, Skills } from "@/interfaces";
 import { BaseModal } from "./base-modal";
 import { FormCertification } from "./Form-certification";
-import { SkillRating } from './SkillRating';
 import { CertificationsList } from './certifications-list';
 import { SkillsList } from './Skills-list';
 

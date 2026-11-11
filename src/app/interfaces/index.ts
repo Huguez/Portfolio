@@ -1,5 +1,5 @@
 export type { certificateI } from "./certificate"
 export type { projectI } from "./project"
-export type { JobI } from "./jobs"
+export type { JobI, IExperienceForm } from "./jobs"
 export type { User } from "./user"
 export type { Skill, Skills } from "./skill"

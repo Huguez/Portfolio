@@ -7,9 +7,17 @@ export interface JobI {
    location:    string,
    modeWork:    ModeWorkT,
    description: string,
-   createdAt:   string,
-   updatedAt:   string,
    id:          string,
 }
 
-export type ModeWorkT  = 'hybrid' | 'remote' | 'on-site' | 'freelance'
+export type ModeWorkT  = 'hybrid' | 'remote' | 'on-site' | 'freelance' | ""
+
+export interface IExperienceForm {
+   companyName: string;
+   startDate: string;
+   endDate: string;
+   position: string;
+   modeWork: ModeWorkT;
+   description: string
+   location:    string,
+}

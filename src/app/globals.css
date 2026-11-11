@@ -45,3 +45,13 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+input[type="date"]:not(:focus):not(:valid) {
+  color: transparent;
+}
+
+input[type="date"]:focus,
+input[type="date"]:valid {
+  color: inherit;
+}
+

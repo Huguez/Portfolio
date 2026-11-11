@@ -7,10 +7,10 @@ export { UploadCV } from "./ui/UploadCV"
 
 export { default as Providers } from "./providers/Providers"
 
-export { default as WhoIam } from "./pageComponents/WhoIam"
+export { WhoIam } from "./pageComponents/WhoIam"
 export { default as Hello } from "./pageComponents/Hello"
 export { default as Projects } from "./pageComponents/Projects"
-export { default as Experience } from "./pageComponents/Experience"
+export { Experience } from "./pageComponents/Experience"
 
 export { ProjectCard } from "./ui/ProjectCard"
 export { CertificateCard } from "./ui/CertificateCard"
@@ -22,6 +22,9 @@ export { ImageFace } from "./ui/ImageFace"
 export { BaseModal } from "./ui/base-modal"
 export { FormCertification } from "./ui/Form-certification"
 
+export { ExperienceManager } from "./ui/Experience-manager"
+export { ExperienceForm } from "./ui/Experience-form"
+export { JobsList } from "./ui/Jobs-list"
 export { SkillRating } from "./ui/SkillRating"
 export { default as Loading } from "./ui/Loading"
 export { default as Spinner  } from "./ui/Spinner"

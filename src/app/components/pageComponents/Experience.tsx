@@ -1,50 +1,18 @@
 'use client'
 
+import { formatDate } from "@/helpers";
 import type { JobI } from "@/interfaces";
 import { useInView } from "react-intersection-observer";
 
 interface paramsI {
-   jobs: JobI[] | undefined;
+   jobs?: JobI[];
 }
 
-export default function Experience( { jobs }:paramsI ) {
+export const Experience = ( { jobs }:paramsI ) => {
 
    const { ref, inView } = useInView( {
       threshold: 0,
    } )
-
-   const formatDate = ( fecha: string ): string => {
-      const [ year, mounth, ..._ ] = fecha.slice( 0, 10 ).split( "-" )
-
-      switch( mounth ){
-         case "01":
-            return `January ${ year }`
-         case "02":
-            return `Febrary ${ year }`
-         case "03":
-            return `Mars ${ year }`
-         case "04":
-            return `April ${ year }`
-         case "05":
-            return `May ${ year }`
-         case "06":
-            return `June ${ year }`
-         case "07":
-            return `July ${ year }`
-         case "08":
-            return `August ${ year }`
-         case "09":
-            return `September ${ year }`
-         case "10":
-            return `October ${ year }`
-         case "11":
-            return `November ${ year }`
-         case "12":
-            return `December ${ year }`
-         default: 
-            throw Error(" convertDate ")
-      }
-   }
 
    return (
       <div ref={ ref } className={`container p-16 lg:pt-28 mx-auto ${ inView ? "fade-up-custom" : "" }`}  >
@@ -55,7 +23,7 @@ export default function Experience( { jobs }:paramsI ) {
 
             {
                jobs && jobs.map( job => (
-                  <div key={   job.id } className="mt-8 flex flex-col text-center md:flex-row md:text-left">
+                  <div key={ job.id } className="mt-8 flex flex-col text-center md:flex-row md:text-left">
                
                      <div className="md:w-2/5">
                         <div className="">
